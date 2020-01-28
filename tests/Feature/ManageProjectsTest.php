@@ -12,7 +12,7 @@ class ManageProjectsTest extends TestCase
 {
    use RefreshDatabase, WithFaker;
 
-    /** @test */
+/** @test */
 
     public function test_guest_cannot_manage_projects()
     {
