@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class, 'owner_id')->latest('updated_at');
     }
+
+    public function activity()
+    {
+        return $this->hasMany(App\Activity::class, 'user_id')->lastest('updated_at');
+    }
 }

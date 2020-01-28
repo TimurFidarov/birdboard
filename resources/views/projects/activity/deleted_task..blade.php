@@ -1,1 +1,1 @@
-You deleted "{{ $activity->subject->body }}" task
+{{$activity->user->name}} deleted "{{ $activity->subject->body }}" task
