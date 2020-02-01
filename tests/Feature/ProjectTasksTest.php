@@ -77,7 +77,6 @@ class ProjectTasksTest extends TestCase
 
     public function test_a_task_requires_a_body()
     {
-
         $project = ProjectFactory::create();
 
         $attr = factory(Task::class)->raw(['body' => '']);
