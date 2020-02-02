@@ -367,6 +367,7 @@ module.exports = {
   backgroundColors: colors,
 
 
+
   /*
   |-----------------------------------------------------------------------------
   | Background sizes               https://tailwindcss.com/docs/background-size
@@ -386,6 +387,8 @@ module.exports = {
     'cover': 'cover',
     'contain': 'contain',
   },
+
+
 
 
   /*

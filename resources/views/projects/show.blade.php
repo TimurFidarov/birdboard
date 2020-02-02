@@ -9,9 +9,15 @@
 
             <div class="flex items-center">
                 @foreach($project->members as $member)
-                    <img src="{{ gravatar_url($member->email) }}" alt="{{ $member->name }}'s avatar" class="rounded-full w-8 mr-2">
+                    <img
+                        src="{{ gravatar_url($member->email) }}"
+                        alt="{{ $member->name }}'s avatar"
+                        class="rounded-full w-8 mr-2">
                 @endforeach
-                <img src="{{ gravatar_url($project->owner()->email) }}" alt="{{ $project->owner->email }}'s avatar" class="rounded-full w-8 mr-2">
+                <img
+                    src="{{ gravatar_url($project->owner->email) }}"
+                    alt="{{ $project->owner->email }}'s avatar"
+                    class="rounded-full w-8 mr-2">
 
                 <a href="{{ $project->path() }}/edit" class="button ml-4">Edit Project</a>
 
@@ -56,14 +62,15 @@
                         @method('PATCH')
 
                         <textarea
-                         name="notes"
-                         class="card w-full"
-                         style="min-height: 200px"
-                         placeholder="Anything special you want to take note of?"
-                         >{{ $project->notes }}</textarea>
+                            name="notes"
+                            class="card w-full"
+                            style="min-height: 200px"
+                            placeholder="Anything special you want to take note of?"
+                            >{{ $project->notes }}</textarea>
 
                         <button type="submit" class="button">Save</button>
                     </form>
+                    @include('errors')
                 </div>
 
             </div>
@@ -71,6 +78,10 @@
             <div class="lg:w-1/4 px-3">
                 @include('projects.card')
                 @include('projects.activity.card')
+
+                @can('manage', $project)
+                    @include('projects.invite')
+                @endcan
             </div>
         </div>
     </main>

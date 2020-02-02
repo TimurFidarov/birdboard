@@ -65,7 +65,17 @@ class ManageProjectsTest extends TestCase
     {
         $project = ProjectFactory::create();
 
-        $this->actingAs($this->signIn())
+        $user = $this->signIn();
+
+        $this->actingAs($user)
+            ->delete($project->path())
+            ->assertStatus(403);
+
+        $this->assertDatabaseHas('projects', $project->only('id'));
+
+        $project->invite($this->signIn());
+
+        $this->actingAs($user)
             ->delete($project->path())
             ->assertStatus(403);
 
